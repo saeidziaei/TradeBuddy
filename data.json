@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Fin",
+      "lastName": "Dout",
+      "emailAddress": "fin@dount.com",
+      "phoneNumber": "0411331998"
+    },
+    {
+      "id": 2,
+      "firstName": "Ben",
+      "lastName": "Dover",
+      "emailAddress": "ben@dover.com",
+      "phoneNumber": "0411331998"
+    }
+  ],
+  "ads": [
+    {
+      "id": 1,
+      "userId": 1,
+      "category": "Bitcoin",
+      "isSell": true,
+      "exchange": "Bitstamp",
+      "multiplier": 1.1,
+      "comment": "برای اطلاعات بیشتر لطفا با من تماس بگیرید",
+      "transactionMinAmount": 100,
+      "transactionMaxAmount": 1000,
+      "transactionCurrency": "AUD",
+      "lastUpdate": "01/Oct/2015"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "category": "Bitcoin",
+      "isSell": false,
+      "exchange": "Bitstamp",
+      "multiplier": 0.95,
+      "comment": "خریدار بیتکوین با قیمت منصفانه",
+      "transactionMinAmount": 100,
+      "transactionMaxAmount": 1000,
+      "transactionCurrency": "AUD",
+      "lastUpdate": "01/Oct/2015"
+    }
+  ]
+}
