@@ -1,10 +1,102 @@
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+@font-face {
+font-family:"NotoNaskh";
+src: url( "fonts/NotoNaskhArabic-Regular.ttf" );
 
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: NotoNaskh, Tahoma;
+  font-size: 14px;
 }
 
 a {
   color: #00B7FF;
 }
+.tile-img{
+    font-size: 40pt;
+    text-align: center;
+}
+ .next-payment, .another-tile {
+  background: #1378af;
+  }
+  .next-payment:hover, .another-tile:hover {
+  background: #0d547a;
+  }
+  .tile {
+  min-height: 140px;
+  margin-top: 15px;
+  display: block;
+  padding: 5px 15px 15px 15px;
+  position: relative;
+  border-radius: 5px;
+  }
+  .payment-amount {
+  font-size: 2.5em;
+  }
+  .tiles-container a {
+  color: #fff;
+  text-decoration: none;
+  }
+  .tile {
+  min-height: 140px;
+  margin-top: 15px;
+  display: block;
+  padding: 5px 15px 15px 15px;
+  position: relative;
+  }
+  .header-bar{
+  background-color:#000;
+  color:white;
+  }
+  .tile-full-height{
+  min-height:450px;
+  background-color:#FE9;
+  }
+  .reminders.full{
+  background-size:450px;
+  min-height:450px;
+  background:url('../images/cockatoo-image-310x440px.png') no-repeat center centerÂ #000;Â
+  }
+  .my-profile{
+  background:#1378af;
+  }
+  .my-profile:hover{
+  background:#0d547a;
+  }
+  .my-profile .tile-img{
+  background:url('../images/icon-landingpage-myprofile.png') no-repeat center center;
+  }
+  .request-doc{
+  background:#823df0;
+  }
+  .request-doc:hover{
+  background:#5b2ba8;
+  }
+  .request-doc .tile-img{
+  background:url('../images/request-document.png') no-repeat center center;
+  }
+  .green{
+  background:#49850c;
+  }
+  .green:hover{
+  background:#335d08;
+  }
+  .basicscard-payment{
+  background:#d6002B;
+  }
+  .basicscard-payment:hover{
+  background:#95001e;
+  }
+  .orange{
+  background:#d74009;
+  }
+  .orange:hover{
+  background:#962d06;
+  }
+  .rei{
+  background:#03537f;
+  }
+  .rei:hover{
+  background:#023a59;
+  }

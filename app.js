@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// this is just a comment to test git setup
+// this is just a comment to test git setup. more
 var dbConfig = require('./db.js');
 var mangoose = require('mongoose');
 mangoose.connect(dbConfig.url);
