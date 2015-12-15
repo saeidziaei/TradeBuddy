@@ -30,22 +30,14 @@ block content
         .col-xs-12.col-sm-4.tiles-group
           .row
             .col-xs-12.col-sm-6
-              +minitile('950', 'انتخاب سریع', 'Navigate somewhere!', 'fa-bolt', 'orange')
+              +minitile('950', t("tile.create-ad"), 'Navigate somewhere!', 'fa-bolt', 'orange')
             .col-xs-12.col-sm-6
-              +minitile('965', 'خرید بیتکوین', 'Click to go to request doco', 'fa-bitcoin', 'green')
+              +minitile('951', t("tile.buy-bitcoin"), 'Click to go to request doco', 'fa-bitcoin', 'green')
           .row
             .col-xs-12.col-sm-6
-              a(href='#', target='_self', title='Navigate to my profile')
-                #950.upload-docs.tile
-                  .tile-img
-                  .tile-name.text-center
-                    | My profile
+              +minitile('952', t("tile.contact-us"), 'Navigate somewhere!', 'fa-paper-plane-o', 'purple')
             .col-xs-12.col-sm-6
-              a(href='#', target='_self', title='Navigate to Request a Document')
-                #965.request-doc.tile
-                  .tile-img
-                  .tile-name.text-center
-                    | Request a Document
+              +minitile('953', t("tile.sell-bitcoin"), 'Click to go to request doco', 'fa-bitcoin', 'orange')
           .row
             .col-xs-12.col-sm-6
               a(href='#', target='_self', title='Navigate to my profile')
@@ -60,15 +52,15 @@ block content
                   .tile-name.text-center
                     | Request a Document
 
-  div.container
-    div.row
-      div.col-sm-6.col-md-4.col-md-offset-4
-        #user
-        h1.text-center.login-title Welcome #{user.firstName}. Check your details below:
-          div.signup-wall
-            ul.user-details
-              li Username ---> #{user.username}
-              li Email    ---> #{user.email}
-              li First Name ---> #{user.firstName} 
-              li Last Name ---> #{user.lastName}
-              a(href='/signout', class='text-center new-account') Sign Out
+  // div.container
+  //   div.row
+  //     div.col-sm-6.col-md-4.col-md-offset-4
+  //       #user
+  //       h1.text-center.login-title Welcome #{user.firstName}. Check your details below:
+  //         div.signup-wall
+  //           ul.user-details
+  //             li Username ---> #{user.username}
+  //             li Email    ---> #{user.email}
+  //             li First Name ---> #{user.firstName} 
+  //             li Last Name ---> #{user.lastName}
+  //             a(href='/signout', class='text-center new-account') Sign Out

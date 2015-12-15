@@ -67,10 +67,10 @@ a {
   .my-profile .tile-img{
   background:url('../images/icon-landingpage-myprofile.png') no-repeat center center;
   }
-  .request-doc{
+  .purple{
   background:#823df0;
   }
-  .request-doc:hover{
+  .purple:hover{
   background:#5b2ba8;
   }
   .request-doc .tile-img{

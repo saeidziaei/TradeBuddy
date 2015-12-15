@@ -4,6 +4,7 @@ html
     p= bitstamp.bid
     title= title
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+    script(src='i18next/i18next.js', type='text/javascript')    
     link(rel='stylesheet', href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='css/style.css')
@@ -12,5 +13,10 @@ html
       .row.text-right
         .col-xs-12.col-sm-12
           h2 Header Text
+          span= t('app.name') + ' << app.name '
     block content
+    script.
+      $.i18n.init([], function() { 
+        console.log(i18n.t('app.name'));
+      });
 

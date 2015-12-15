@@ -1,0 +1,19 @@
+{
+  "route": {
+    "imprint": "imprint"
+  },
+  "app": {
+    "name": "برنامه ما!",
+    "area": "Area 51",
+    "district": "District 9 is more fun than $t(app.area)"
+  },
+  "passport": {
+    "signin": "ورود به سیستم"
+  },
+  "tile":{
+    "buy-bitcoin": "خرید بیتکوین",
+    "sell-bitcoin": "فروش بیتکوین",
+    "create-ad": "ایجاد آگهی",
+    "contact-us": "تماس با ما"
+  }
+}
