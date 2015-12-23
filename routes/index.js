@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoos = require('mongoose');
 var User = require('../models/user');
-
+var bCrypt = require('bcrypt-nodejs');
 
 var nev = require('email-verification')(mongoos);
 nev.configure({
@@ -68,9 +68,10 @@ module.exports = function (passport) {
 			email: req.body.email,
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
-			password: req.body.password,
+			password: bCrypt.hashSync(req.body.password),
 			username: req.body.username
 		});
+		
 		nev.createTempUser(newUser, function (err, newTempUser) {
 			if (err) {
 				return res.status(404).send('ERROR: creating temp user FAILED');

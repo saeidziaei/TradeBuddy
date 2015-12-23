@@ -25,12 +25,15 @@ var dbConfig = require('./db.js');
     
 var mongoose = require('mongoose');
 var nev = require('email-verification')(mongoose);
-
+ 
 mongoose.connect(dbConfig.url);
 
-var User = require('./models/user.js');
 
 
+var moneyMex = require("./third_party/ticker/moneymex.js");
+moneyMex.getRates(function(rates){
+  console.log(rates);
+});
 
 
 // Configuring Passport
