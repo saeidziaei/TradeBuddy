@@ -100,3 +100,8 @@ a {
   .rei:hover{
   background:#023a59;
   }
+  .lng-setter{
+      margin: 15px;
+      padding: 10px;
+      text-decoration: none;
+  }

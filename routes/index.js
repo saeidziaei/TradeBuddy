@@ -109,7 +109,12 @@ module.exports = function (passport) {
 	/* GET Home Page */
 	// router.get('/home', isAuthenticated, function (req, res) {
 	router.get('/home', function (req, res) {
-		res.render('home', { user: req.user });
+  
+		res.render('home',
+		 { 
+			 user: req.user,
+			 translated : req.t('app.name')
+		 });
 	});
 
 	/* Handle Logout */
@@ -139,6 +144,9 @@ module.exports = function (passport) {
 	});
 	});
 
+	var ad = require('./ad.js');
+	router.get('/ad/:id/view', ad.edit);
+	router.post('/ad/:id/view', ad.update);
 
 	return router;
 }

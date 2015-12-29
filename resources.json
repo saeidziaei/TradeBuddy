@@ -1,0 +1,30 @@
+{
+    "en": {
+        "translation": {
+            "header-text": "Welcome",
+            "common": {
+                "OK": "OK"
+            },
+            "tile": {
+                "buy-bitcoin":  "Buy Bitcoin",
+                "sell-bitcoin": "Sell Bitcoin",
+                "create-ad":    "Create Ad",
+                "contact-us":   "Contact Us"
+            }
+        }
+    },
+    "fa": {
+        "translation": {
+            "header-text":  "خوش آمدید",
+            "common": {
+                "OK": "قبول"
+            },
+            "tile": {
+                "buy-bitcoin": "خرید بیتکوین",
+                "sell-bitcoin": "فروش بیتکوین",
+                "create-ad": "ایجاد آگهی",
+                "contact-us": "تماس با ما"
+            }
+        }
+    }
+}

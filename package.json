@@ -18,6 +18,7 @@
     "express-session": "^1.12.1",
     "follow-redirects": "0.0.7",
     "i18next": "^1.10.6",
+    "i18next-express-middleware": "^0.1.2",
     "jade": "~1.11.0",
     "mongoose": "^4.2.8",
     "morgan": "~1.6.1",

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var middleware = require('i18next-express-middleware');
 
 var app = express();
 
@@ -24,101 +25,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 var dbConfig = require('./db.js');
     
 var mongoose = require('mongoose');
-var nev = require('email-verification')(mongoose);
+
  
 mongoose.connect(dbConfig.url);
 
 
-
+/*
 var moneyMex = require("./third_party/ticker/moneymex.js");
 moneyMex.getRates(function(rates){
   console.log(rates);
 });
-
-
-// Configuring Passport
-var passport = require('passport');
-var expressSession = require('express-session');
-// TODO - Why Do we need this key ?
-app.use(expressSession({ secret: 'mySecretKey' }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-// Using the flash middleware provided by connect-flash to store messages in session
-// and displaying in templates
-var flash = require('connect-flash');
-app.use(flash());
-
-var i18n = require('i18next');
-i18n.init({
-  ns: {
-    namespaces: ['ns.common', 'ns.special'],
-    defaultNs: 'ns.special'
-  },
-  resSetPath: '/public/locales/__lng__/new.__ns__.json',
-  saveMissing: true,
-  debug: true,
-  sendMissingTo: 'fallback',
-  // preload: ['en', 'de'],
-  preload: ['en'],
-  detectLngFromPath: 0,
-  ignoreRoutes: ['img/', 'img', 'img/', '/img/', 'css/', 'i18next/']
-}, function(t) {
-
-  console.log('i18n is initialized.');
-
-  i18n.addRoute('/:lng', ['en', 'de'], app, 'get', function(req, res) {
-    console.log('SEO friendly route ...');
-    res.render('index');
-  });
-
-  i18n.addRoute('/:lng/route.imprint', ['en', 'de'], app, 'get', function(req, res) {
-    console.log("localized imprint route");
-    res.render('imprint');
-  });
-
-});
-app.use(i18n.handle); // have i18n befor app.router
-
-i18n.registerAppHelper(app)
-  .serveClientScript(app)
-  .serveDynamicResources(app)
-  .serveMissingKeyRoute(app);
-
-i18n.serveWebTranslate(app, {
-  i18nextWTOptions: {
-    languages: ['de-DE', 'en-US', 'dev'],
-    namespaces: ['ns.common', 'ns.special'],
-    resGetPath: "locales/resources.json?lng=__lng__&ns=__ns__",
-    resChangePath: 'locales/change/__lng__/__ns__',
-    resRemovePath: 'locales/remove/__lng__/__ns__',
-    fallbackLng: "dev",
-    dynamicLoad: true
-  }
-});
-
-
-
-// Initialize Passport
-var initPassport = require('./passport/init');
-initPassport(passport);
-
-
-
-var routes = require('./routes/index')(passport);
-app.use('/', routes);
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
+*/
 
 var Bitstamp = require('bitstamp');
 var bitstamp = new Bitstamp;
-
-
 
 
 // update ticker every minute
@@ -135,6 +55,94 @@ setInterval(function () {
   });
 }, interval);
 */
+
+
+// Configuring Passport
+var passport = require('passport');
+var expressSession = require('express-session');
+// TODO - Why Do we need this key ?
+app.use(expressSession({ secret: 'Some very scary key' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Using the flash middleware provided by connect-flash to store messages in session
+// and displaying in templates
+var flash = require('connect-flash');
+app.use(flash());
+
+
+// Initialize Passport
+var initPassport = require('./passport/init');
+initPassport(passport);
+
+
+var i18next = require('i18next');
+var middleware = require('i18next-express-middleware');
+
+
+i18next
+    .use(middleware.LanguageDetector)
+    .init({
+    //lng: 'en',  // disables detection
+    detection: {
+        // order and from where user language should be detected
+        order: [/*'path',*/ 'querystring', 'session', 'cookie', 'header'],
+
+        // keys or params to lookup language from
+        lookupQuerystring: 'lng',
+        lookupCookie: 'i18next',
+        lookupSession: 'lng',
+        lookupFromPathIndex: 0,
+
+        // cache user language
+        caches: false, // ['cookie']
+
+        // optional expire and domain for set cookie
+        cookieExpirationDate: new Date(),
+        cookieDomain: 'myDomain'
+    }
+ ,resources: require("./resources.json")
+}, function(err, t) {
+  // initialized and ready to go!
+  var hw = t('key'); 
+  console.log(hw);
+  console.log(t('common.OK', {lng : 'en'}));
+  console.log(t('common.OK', {lng : 'fa'}));
+});
+
+app.use(middleware.handle(i18next, {
+  ignoreRoutes: ["/foo"],
+  removeLngFromUrl: false
+}));
+
+
+app.use(function(req, res, next){
+    // var lng = req.param('lng');
+    var lng = req.query.lng;
+    if (lng){
+        console.log("Change request language to " + lng);
+        req.session.lng = lng;
+    }
+    next();
+});
+
+app.get('/myroute', function(req, res) {
+  res.render('home', {title: req.t('key')});
+});
+
+
+var routes = require('./routes/index')(passport);
+app.use('/', routes);
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+
+
+
 
 // error handlers
 
